@@ -1,7 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import { AnimatePresence, motion } from 'framer-motion'
-import { CheckIcon, XIcon } from 'lucide-react'
+import { CheckIcon, Github, XIcon } from 'lucide-react'
 import { useState } from 'react'
 
 const overlayVariants = {
@@ -86,7 +86,7 @@ const checkIconVariants = {
   },
 }
 
-const deployButtonVariants = {
+const githubButtonVariants = {
   hidden: {
     opacity: 0,
     y: -10,
@@ -292,20 +292,27 @@ const ModalPage = () => {
                     <AnimatePresence mode="wait">
                       {CreateOptionType !== '' && (
                         <motion.div
-                          variants={deployButtonVariants}
+                          variants={githubButtonVariants}
                           initial="hidden"
                           animate="visible"
                           exit="hidden"
                           className="flex flex-col gap-4 overflow-hidden"
                         >
-                          <button className="px-4 py-2 h-[40px] text-[15px] rounded-full bg-primary text-white hover:bg-primary/90 transition-colors">
-                            Deploy Function
+                          <p className="text-sm text-gray-500">
+                            In order to ensure you can easily update your Function after
+                            deploying it, please connect it to a GitHub repository.
+                          </p>
+                          <button className="px-4 py-3 h-[48px] text-[15px] rounded-full bg-[#24292F] text-white flex items-center justify-center gap-2 hover:bg-[#24292F]/90 transition-all duration-200">
+                            <Github className="size-4" />
+                            <span>Authenticate with GitHub</span>
                           </button>
                           <p className="text-xs text-gray-500 text-center">
-                            When pushed to GitHub, we will automatically deploy the
-                            Function. Can't see your repo here?{' '}
-                            <a href="/" className="text-primary">
-                              Configure the Evervault app on Github.
+                            Don't use GitHub?{' '}
+                            <a
+                              href="/"
+                              className="text-primary hover:underline underline-offset-2 decoration-primary/20 decoration-2"
+                            >
+                              Use our CLI instead
                             </a>
                           </p>
                         </motion.div>
