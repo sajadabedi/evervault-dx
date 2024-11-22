@@ -4,7 +4,7 @@ import { ModalPage } from './pages/ModalPage'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<IconsPage />} />
         <Route path="/modal" element={<ModalPage />} />
